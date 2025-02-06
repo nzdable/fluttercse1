@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:fluttercse1/views/public/index.dart';
 import 'package:fluttercse1/views/public/widget.dart';
+import 'package:fluttercse1/views/public/widget-with-pic.dart';
 
 void main() {
   runApp(const MyApp());
@@ -18,7 +19,7 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
       ),
       // home: IndexScreen(), // Calls the IndexScreen widget from lib/views/public/index.dart
-      home: BasicWidget(),
+      home: WidgetWithPic(),
     );
   }
 }
