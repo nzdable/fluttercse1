@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:fluttercse1/views/public/index.dart';
+import 'package:fluttercse1/views/public/widget.dart';
 
 void main() {
   runApp(const MyApp());
@@ -13,11 +14,11 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
-
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: IndexScreen(), // Calls the IndexScreen widget from lib/views/public/index.dart
+      // home: IndexScreen(), // Calls the IndexScreen widget from lib/views/public/index.dart
+      home: BasicWidget(),
     );
   }
 }
@@ -36,14 +37,12 @@ class _MyHomePageState extends State<MyHomePage> {
 
   void _incrementCounter() {
     setState(() {
-
       _counter++;
     });
   }
 
   @override
   Widget build(BuildContext context) {
-
     return Scaffold(
       appBar: AppBar(
         // TRY THIS: Try changing the color here to a specific color (to

@@ -32,3 +32,4 @@ class IndexScreen extends StatelessWidget {
 
 // Sizebox is more ideal for spacing because it has less properties than Container
 // We use container mainly for styling
+//Layout Builder is used to get the width of the screen with the sidebar already shown in place
