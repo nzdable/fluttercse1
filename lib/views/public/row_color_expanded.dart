@@ -32,13 +32,18 @@ class RowColorExpanded extends StatelessWidget {
                                 borderRadius: BorderRadius.circular(10)),
                           ),
                         ),
-                        CircleAvatar(
-                          // height: 100,
-                          // width: 100,
+                        Expanded(
+                            child: Container(
+                          height: 100,
+                          width: 100,
                           // color: Colors.green,
-                          backgroundColor: Colors.green,
-                          radius: 50,
-                        )
+                          decoration: BoxDecoration(
+                            color: Colors.green,
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                          // backgroundColor: Colors.green,
+                          // radius: 50,
+                        )),
                       ],
                     )),
 
