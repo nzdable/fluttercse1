@@ -90,11 +90,11 @@ class Picture extends StatelessWidget {
                     height: 100,
                     width: 75,
                     color: Colors.pink,
+                    padding: EdgeInsets.fromLTRB(20, 40, 0, 0),
                     child: Text(
                       "4.8",
                       style: TextStyle(fontSize: 25),
                     ),
-                    padding: EdgeInsets.fromLTRB(20, 40, 0, 0),
                   ),
                   // STAR
                   Container(

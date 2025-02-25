@@ -15,19 +15,19 @@ class MediaqueryTextstyleColumn extends StatelessWidget {
             alignment: Alignment(-1, -1),
             child: Column(
               children: [
-                Container(
+                SizedBox(
                   width: 200,
                   height: 150,
                   // color: Colors.pink,
                   child: Column(
                     children: [
                       Container(
+                        padding: EdgeInsets.fromLTRB(0, 50, 0, 0),
                         child: Text(
                           "Username",
                           style: TextStyle(
                               fontSize: 25, fontWeight: FontWeight.bold),
                         ),
-                        padding: EdgeInsets.fromLTRB(0, 50, 0, 0),
                       ),
                       Container(
                         width: 150,
@@ -40,19 +40,19 @@ class MediaqueryTextstyleColumn extends StatelessWidget {
                     ],
                   ),
                 ),
-                Container(
+                SizedBox(
                   width: 200,
                   height: 150,
                   // color: Colors.blue,
                   child: Column(
                     children: [
                       Container(
+                        padding: EdgeInsets.fromLTRB(0, 10, 0, 0),
                         child: Text(
                           "Password",
                           style: TextStyle(
                               fontSize: 25, fontWeight: FontWeight.bold),
                         ),
-                        padding: EdgeInsets.fromLTRB(0, 10, 0, 0),
                       ),
                       Container(
                         width: 150,

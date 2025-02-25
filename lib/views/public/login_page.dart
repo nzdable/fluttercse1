@@ -8,192 +8,325 @@ class LoginPage extends StatelessWidget {
     return Scaffold(
       body: Center(
         child: SizedBox(
-          width: 1000,
-          child: Card(
-            child: Row(
-              children: [
-                // LEFT SIDE - IMAGE OR DECORATION
-                SizedBox(
-                  width: 400,
-                  height: 800,
-                  child: Container(
-                    color: Colors.red,
-                  ),
-                ),
-
-                // RIGHT SIDE - LOGIN FORM
-                Expanded(
-                  child: Padding(
-                    padding: const EdgeInsets.all(50.0),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        // ICON & WELCOME TEXT
-                        Icon(
-                          Icons.star,
-                          color: Color.fromARGB(255, 176, 159, 1),
-                          size: 50,
-                        ),
-                        SizedBox(height: 10),
-                        Text(
-                          "Hello, Welcome Back",
-                          style: TextStyle(
-                              fontSize: 18, fontWeight: FontWeight.bold),
-                        ),
-                        SizedBox(height: 20),
-
-                        // EMAIL FIELD
-                        Container(
-                          height: 50,
-                          width: 250,
-                          padding: EdgeInsets.symmetric(horizontal: 10),
-                          alignment: Alignment.centerLeft,
-                          decoration: BoxDecoration(
-                            color: Colors.white,
-                            border:
-                                Border.all(color: Color(0xFFE7E7E7), width: 1),
-                            borderRadius: BorderRadius.circular(5),
+          width: double.infinity,
+          child: SingleChildScrollView(
+            child: Padding(
+              padding: const EdgeInsets.all(100.0),
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  // HEADER
+                  Padding(
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 50, vertical: 20),
+                    child: Align(
+                      alignment: Alignment.centerRight,
+                      child: Row(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          Text(
+                            "English",
+                            style: TextStyle(
+                                fontSize: 14, fontWeight: FontWeight.bold),
                           ),
-                          child: Text(
-                            "Email Address",
-                            style: TextStyle(fontWeight: FontWeight.bold),
+                          Icon(Icons.arrow_drop_down,
+                              color: Colors.grey, size: 30),
+                          SizedBox(width: 10),
+                          ElevatedButton(
+                            onPressed: () {},
+                            style: ElevatedButton.styleFrom(
+                              backgroundColor:
+                                  const Color.fromRGBO(254, 247, 255, 1),
+                              foregroundColor: Colors.indigo,
+                              elevation: 0,
+                              padding: EdgeInsets.symmetric(
+                                  horizontal: 10, vertical: 5),
+                              textStyle: TextStyle(
+                                  fontSize: 14, fontWeight: FontWeight.bold),
+                            ),
+                            child: Text("Sign In"),
                           ),
-                        ),
-                        SizedBox(height: 10),
-
-                        // PASSWORD FIELD
-                        Container(
-                          height: 50,
-                          width: 250,
-                          padding: EdgeInsets.symmetric(horizontal: 10),
-                          alignment: Alignment.centerLeft,
-                          decoration: BoxDecoration(
-                            color: Colors.white,
-                            border:
-                                Border.all(color: Color(0xFFE7E7E7), width: 1),
-                            borderRadius: BorderRadius.circular(5),
-                          ),
-                          child: Text(
-                            "Password",
-                            style: TextStyle(fontWeight: FontWeight.bold),
-                          ),
-                        ),
-                        SizedBox(height: 10),
-
-                        // REMEMBER ME & FORGOT PASSWORD
-                        SizedBox(
-                          width: 250,
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Row(
-                                children: [
-                                  Icon(Icons.check_box),
-                                  SizedBox(width: 5),
-                                  Text("Remember Me"),
-                                ],
-                              ),
-                              Text(
-                                "Forgot Password?",
-                                style: TextStyle(color: Colors.blue),
-                              ),
-                            ],
-                          ),
-                        ),
-                        SizedBox(height: 20),
-
-                        // LOGIN BUTTON
-                        SizedBox(
-                          height: 50,
-                          width: 250,
-                          child: ElevatedButton(
+                          SizedBox(width: 10),
+                          ElevatedButton(
                             onPressed: () {},
                             style: ElevatedButton.styleFrom(
                               backgroundColor: Colors.indigo,
                               foregroundColor: Colors.white,
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(5),
+                              padding: EdgeInsets.symmetric(
+                                  horizontal: 10, vertical: 5),
+
+                              textStyle: TextStyle(
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.bold), // Text style
+                            ),
+                            child: Text("Register"),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+
+                  // MAIN CONTENT
+                  Row(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      // LEFT SECTION - WELCOME TEXT & IMAGE
+                      Expanded(
+                        flex: 1,
+                        child: Padding(
+                          padding: const EdgeInsets.all(50.0),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text("Welcome to",
+                                  style: TextStyle(
+                                      fontSize: 32,
+                                      fontWeight: FontWeight.bold)),
+                              Text("DABLE #4",
+                                  style: TextStyle(
+                                      fontSize: 40,
+                                      fontWeight: FontWeight.bold)),
+                              SizedBox(height: 10),
+                              Text(
+                                "Lorem ipsum is a dummy or placeholder text commonly used in graphic design, "
+                                "publishing, and web development to fill empty spaces in a layout that does not yet have content.",
+                                style: TextStyle(fontSize: 16),
                               ),
-                            ),
-                            child: Text(
-                              "Login",
-                              style: TextStyle(
-                                  fontWeight: FontWeight.bold, fontSize: 14),
-                            ),
+                              SizedBox(height: 20),
+                              Text("Join Now",
+                                  style: TextStyle(
+                                      color: Colors.indigo,
+                                      fontSize: 18,
+                                      fontWeight: FontWeight.bold)),
+                              SizedBox(height: 20),
+                              Container(
+                                height: 300,
+                                decoration: BoxDecoration(
+                                  image: DecorationImage(
+                                    image: NetworkImage(
+                                        "https://png.pngtree.com/png-vector/20220706/ourmid/pngtree-distant-access-to-business-data-png-image_5701909.png"),
+                                    fit: BoxFit.cover,
+                                  ),
+                                  borderRadius: BorderRadius.circular(10),
+                                ),
+                              ),
+                            ],
                           ),
                         ),
-                        SizedBox(height: 20),
+                      ),
 
-                        // "OR" DIVIDER
-                        Row(
-                          children: [
-                            Expanded(
-                              child: Divider(color: Colors.black, thickness: 1),
-                            ),
-                            Padding(
-                              padding: EdgeInsets.symmetric(horizontal: 8),
-                              child: Text("or"),
-                            ),
-                            Expanded(
-                              child: Divider(color: Colors.black, thickness: 1),
-                            ),
-                          ],
-                        ),
-                        SizedBox(height: 20),
+                      // RIGHT SECTION - LOGIN FORM
+                      Expanded(
+                        flex: 1,
+                        child: Padding(
+                          padding: const EdgeInsets.symmetric(
+                              vertical: 50.0, horizontal: 50.0),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text("Sign In",
+                                  style: TextStyle(
+                                      fontSize: 32,
+                                      fontWeight: FontWeight.bold)),
+                              SizedBox(height: 20),
 
-                        // SOCIAL LOGIN ICONS
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            CircleAvatar(
-                              backgroundColor: Colors.grey[300],
-                              child: Icon(Icons.facebook, color: Colors.blue),
-                            ),
-                            SizedBox(width: 10),
-                            CircleAvatar(
-                              backgroundColor: Colors.grey[300],
-                              child:
-                                  Icon(Icons.g_mobiledata, color: Colors.red),
-                            ),
-                            SizedBox(width: 10),
-                            CircleAvatar(
-                              backgroundColor: Colors.grey[300],
-                              child: Icon(Icons.apple, color: Colors.black),
-                            ),
-                          ],
-                        ),
-                        SizedBox(height: 20),
+                              // EMAIL FIELD
+                              TextField(
+                                decoration: InputDecoration(
+                                  labelText: "Enter Email or Phone",
+                                  border: OutlineInputBorder(
+                                    borderSide: BorderSide(
+                                        color: const Color.fromARGB(
+                                            255, 223, 221, 221)),
+                                  ),
+                                  enabledBorder: OutlineInputBorder(
+                                    borderSide: BorderSide(
+                                        color: const Color.fromARGB(
+                                            255, 223, 221, 221)),
+                                  ),
+                                ),
+                              ),
+                              SizedBox(height: 10),
 
-                        // SIGNUP LINK
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Text("Don't have an account? "),
-                            Text(
-                              "Create an Account",
-                              style: TextStyle(color: Colors.blue),
-                            ),
-                          ],
+                              // PASSWORD FIELD
+                              TextField(
+                                obscureText: true, // To hide the password text
+                                decoration: InputDecoration(
+                                  labelText: "Password",
+                                  border: OutlineInputBorder(
+                                    borderSide: BorderSide(
+                                        color: const Color.fromARGB(
+                                            255, 223, 221, 221)),
+                                  ),
+                                  enabledBorder: OutlineInputBorder(
+                                    borderSide: BorderSide(
+                                        color: const Color.fromARGB(
+                                            255, 223, 221, 221)),
+                                  ),
+                                  suffixIcon: Icon(Icons
+                                      .visibility_off), // Icon after the password field
+                                ),
+                              ),
+                              SizedBox(height: 10),
+
+                              // FORGOT PASSWORD
+                              Align(
+                                alignment: Alignment.centerRight,
+                                child: Text("Forgot Password?",
+                                    style: TextStyle(color: Colors.grey)),
+                              ),
+                              SizedBox(height: 20),
+
+                              // SIGN IN BUTTON
+                              SizedBox(
+                                height: 50,
+                                width: double.infinity,
+                                child: ElevatedButton(
+                                  onPressed: () {},
+                                  style: ElevatedButton.styleFrom(
+                                    backgroundColor: Colors.indigo,
+                                    foregroundColor: Colors.white,
+                                    shape: RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.circular(5)),
+                                  ),
+                                  child: Text("Sign In",
+                                      style: TextStyle(
+                                          fontWeight: FontWeight.bold,
+                                          fontSize: 14)),
+                                ),
+                              ),
+                              SizedBox(height: 20),
+
+                              // "OR" DIVIDER
+                              Row(
+                                children: [
+                                  Expanded(
+                                      child: Divider(
+                                          color: Colors.black, thickness: 1)),
+                                  Padding(
+                                    padding:
+                                        EdgeInsets.symmetric(horizontal: 10),
+                                    child: Text("Or Continue with"),
+                                  ),
+                                  Expanded(
+                                      child: Divider(
+                                          color: Colors.black, thickness: 1)),
+                                ],
+                              ),
+                              SizedBox(height: 20),
+
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Container(
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(10),
+                                      color: Colors.indigo,
+                                    ),
+                                    padding: EdgeInsets.all(10),
+                                    child: Icon(Icons.g_mobiledata,
+                                        color: Colors.white, size: 40),
+                                  ),
+                                  SizedBox(width: 20),
+                                  Container(
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(10),
+                                      color: Colors.indigo,
+                                    ),
+                                    padding: EdgeInsets.all(10),
+                                    child: Icon(Icons.apple,
+                                        color: Colors.white, size: 40),
+                                  ),
+                                  SizedBox(width: 20),
+                                  Container(
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(10),
+                                      color: Colors.indigo,
+                                    ),
+                                    padding: EdgeInsets.all(10),
+                                    child: Icon(Icons.facebook,
+                                        color: Colors.white, size: 40),
+                                  ),
+                                  SizedBox(width: 20),
+                                  Container(
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(10),
+                                      color: Colors.indigo,
+                                    ),
+                                    padding: EdgeInsets.all(10),
+                                    child: Icon(Icons.apple,
+                                        color: Colors.white, size: 40),
+                                  ),
+                                ],
+                              ),
+
+                              SizedBox(height: 20),
+                            ],
+                          ),
                         ),
-                        SizedBox(
-                          height: 200,
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Text("Don't have an account? "),
-                            Text(
-                              "Create an Account",
-                              style: TextStyle(color: Colors.blue),
-                            ),
-                          ],
+                      ),
+                    ],
+                  ),
+
+                  // FOOTER
+                  Container(
+                    width: double.infinity,
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(
+                          10), // Set the background color to white
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.grey.withOpacity(0.2),
+                          spreadRadius: 2,
+                          blurRadius: 4,
+                          offset: Offset(0, -2), // Adjust shadow position
                         ),
                       ],
                     ),
-                  ),
-                ),
-              ],
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(
+                          vertical: 20, horizontal: 40),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text("EST 2024",
+                              style: TextStyle(fontWeight: FontWeight.bold)),
+                          SizedBox(height: 10),
+                          Wrap(
+                            alignment: WrapAlignment.center,
+                            spacing: 10,
+                            runSpacing: 5,
+                            children: [
+                              Text("About",
+                                  style:
+                                      TextStyle(fontWeight: FontWeight.bold)),
+                              Text("Terms of Use",
+                                  style:
+                                      TextStyle(fontWeight: FontWeight.bold)),
+                              Text("Privacy Policy",
+                                  style:
+                                      TextStyle(fontWeight: FontWeight.bold)),
+                              Text("Cookie Policy",
+                                  style:
+                                      TextStyle(fontWeight: FontWeight.bold)),
+                              Text("Copyright Policy",
+                                  style:
+                                      TextStyle(fontWeight: FontWeight.bold)),
+                              Text("Brand Policy",
+                                  style:
+                                      TextStyle(fontWeight: FontWeight.bold)),
+                              Text("Visitor Controls",
+                                  style:
+                                      TextStyle(fontWeight: FontWeight.bold)),
+                            ],
+                          ),
+                        ],
+                      ),
+                    ),
+                  )
+                ],
+              ),
             ),
           ),
         ),
