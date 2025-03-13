@@ -1,6 +1,9 @@
 Stateful widget - changes
 Stateless widget - not changing
 
+java - compiler for apk
+gradle - for 3rd party packages
+
 # fluttercse1
 
 A new Flutter project.
