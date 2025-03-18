@@ -6,330 +6,285 @@ class LoginPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
-        child: SizedBox(
-          width: double.infinity,
-          child: SingleChildScrollView(
-            child: Padding(
-              padding: const EdgeInsets.all(100.0),
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  // HEADER
-                  Padding(
-                    padding: const EdgeInsets.symmetric(
-                        horizontal: 50, vertical: 20),
-                    child: Align(
-                      alignment: Alignment.centerRight,
-                      child: Row(
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          Text(
-                            "English",
-                            style: TextStyle(
-                                fontSize: 14, fontWeight: FontWeight.bold),
-                          ),
-                          Icon(Icons.arrow_drop_down,
-                              color: Colors.grey, size: 30),
-                          SizedBox(width: 10),
-                          ElevatedButton(
-                            onPressed: () {},
-                            style: ElevatedButton.styleFrom(
-                              backgroundColor:
-                                  const Color.fromRGBO(254, 247, 255, 1),
-                              foregroundColor: Colors.indigo,
-                              elevation: 0,
-                              padding: EdgeInsets.symmetric(
-                                  horizontal: 10, vertical: 5),
-                              textStyle: TextStyle(
-                                  fontSize: 14, fontWeight: FontWeight.bold),
-                            ),
-                            child: Text("Sign In"),
-                          ),
-                          SizedBox(width: 10),
-                          ElevatedButton(
-                            onPressed: () {},
-                            style: ElevatedButton.styleFrom(
-                              backgroundColor: Colors.indigo,
-                              foregroundColor: Colors.white,
-                              padding: EdgeInsets.symmetric(
-                                  horizontal: 10, vertical: 5),
+      body: LayoutBuilder(
+        builder: (context, constraints) {
+          bool isWideScreen = constraints.maxWidth > 900;
 
-                              textStyle: TextStyle(
-                                  fontSize: 14,
-                                  fontWeight: FontWeight.bold), // Text style
-                            ),
-                            child: Text("Register"),
-                          ),
-                        ],
-                      ),
-                    ),
+          return Center(
+            child: ListView(
+              children: [
+                Padding(
+                  padding: EdgeInsets.symmetric(
+                    horizontal: isWideScreen ? 100.0 : 20.0,
+                    vertical: 40.0,
                   ),
-
-                  // MAIN CONTENT
-                  Row(
-                    crossAxisAlignment: CrossAxisAlignment.center,
+                  child: Column(
                     children: [
-                      // LEFT SECTION - WELCOME TEXT & IMAGE
-                      Expanded(
-                        flex: 1,
-                        child: Padding(
-                          padding: const EdgeInsets.all(50.0),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text("Welcome to",
-                                  style: TextStyle(
-                                      fontSize: 32,
-                                      fontWeight: FontWeight.bold)),
-                              Text("DABLE #4",
-                                  style: TextStyle(
-                                      fontSize: 40,
-                                      fontWeight: FontWeight.bold)),
-                              SizedBox(height: 10),
-                              Text(
-                                "Lorem ipsum is a dummy or placeholder text commonly used in graphic design, "
-                                "publishing, and web development to fill empty spaces in a layout that does not yet have content.",
-                                style: TextStyle(fontSize: 16),
-                              ),
-                              SizedBox(height: 20),
-                              Text("Join Now",
-                                  style: TextStyle(
-                                      color: Colors.indigo,
-                                      fontSize: 18,
-                                      fontWeight: FontWeight.bold)),
-                              SizedBox(height: 20),
-                              Container(
-                                height: 300,
-                                decoration: BoxDecoration(
-                                  image: DecorationImage(
-                                    image: NetworkImage(""),
-                                    fit: BoxFit.cover,
-                                  ),
-                                  borderRadius: BorderRadius.circular(10),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
+                      // HEADER
+                      _buildHeader(context),
 
-                      // RIGHT SECTION - LOGIN FORM
-                      Expanded(
-                        flex: 1,
-                        child: Padding(
-                          padding: const EdgeInsets.symmetric(
-                              vertical: 50.0, horizontal: 50.0),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text("Sign In",
-                                  style: TextStyle(
-                                      fontSize: 32,
-                                      fontWeight: FontWeight.bold)),
-                              SizedBox(height: 20),
+                      const SizedBox(height: 40),
 
-                              // EMAIL FIELD
-                              TextField(
-                                decoration: InputDecoration(
-                                  labelText: "Enter Email or Phone",
-                                  border: OutlineInputBorder(
-                                    borderSide: BorderSide(
-                                        color: const Color.fromARGB(
-                                            255, 223, 221, 221)),
-                                  ),
-                                  enabledBorder: OutlineInputBorder(
-                                    borderSide: BorderSide(
-                                        color: const Color.fromARGB(
-                                            255, 223, 221, 221)),
-                                  ),
-                                ),
-                              ),
-                              SizedBox(height: 10),
+                      // MAIN CONTENT
+                      isWideScreen
+                          ? Row(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Expanded(flex: 1, child: _buildLeftSection()),
+                                const SizedBox(width: 30),
+                                Expanded(flex: 1, child: _buildRightSection()),
+                              ],
+                            )
+                          : Column(
+                              children: [
+                                _buildLeftSection(),
+                                const SizedBox(height: 30),
+                                _buildRightSection(),
+                              ],
+                            ),
 
-                              // PASSWORD FIELD
-                              TextField(
-                                obscureText: true, // To hide the password text
-                                decoration: InputDecoration(
-                                  labelText: "Password",
-                                  border: OutlineInputBorder(
-                                    borderSide: BorderSide(
-                                        color: const Color.fromARGB(
-                                            255, 223, 221, 221)),
-                                  ),
-                                  enabledBorder: OutlineInputBorder(
-                                    borderSide: BorderSide(
-                                        color: const Color.fromARGB(
-                                            255, 223, 221, 221)),
-                                  ),
-                                  suffixIcon: Icon(Icons
-                                      .visibility_off), // Icon after the password field
-                                ),
-                              ),
-                              SizedBox(height: 10),
+                      const SizedBox(height: 40),
 
-                              // FORGOT PASSWORD
-                              Align(
-                                alignment: Alignment.centerRight,
-                                child: Text("Forgot Password?",
-                                    style: TextStyle(color: Colors.grey)),
-                              ),
-                              SizedBox(height: 20),
-
-                              // SIGN IN BUTTON
-                              SizedBox(
-                                height: 50,
-                                width: double.infinity,
-                                child: ElevatedButton(
-                                  onPressed: () {},
-                                  style: ElevatedButton.styleFrom(
-                                    backgroundColor: Colors.indigo,
-                                    foregroundColor: Colors.white,
-                                    shape: RoundedRectangleBorder(
-                                        borderRadius: BorderRadius.circular(5)),
-                                  ),
-                                  child: Text("Sign In",
-                                      style: TextStyle(
-                                          fontWeight: FontWeight.bold,
-                                          fontSize: 14)),
-                                ),
-                              ),
-                              SizedBox(height: 20),
-
-                              // "OR" DIVIDER
-                              Row(
-                                children: [
-                                  Expanded(
-                                      child: Divider(
-                                          color: Colors.black, thickness: 1)),
-                                  Padding(
-                                    padding:
-                                        EdgeInsets.symmetric(horizontal: 10),
-                                    child: Text("Or Continue with"),
-                                  ),
-                                  Expanded(
-                                      child: Divider(
-                                          color: Colors.black, thickness: 1)),
-                                ],
-                              ),
-                              SizedBox(height: 20),
-
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Container(
-                                    decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(10),
-                                      color: Colors.indigo,
-                                    ),
-                                    padding: EdgeInsets.all(10),
-                                    child: Icon(Icons.g_mobiledata,
-                                        color: Colors.white, size: 40),
-                                  ),
-                                  SizedBox(width: 20),
-                                  Container(
-                                    decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(10),
-                                      color: Colors.indigo,
-                                    ),
-                                    padding: EdgeInsets.all(10),
-                                    child: Icon(Icons.apple,
-                                        color: Colors.white, size: 40),
-                                  ),
-                                  SizedBox(width: 20),
-                                  Container(
-                                    decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(10),
-                                      color: Colors.indigo,
-                                    ),
-                                    padding: EdgeInsets.all(10),
-                                    child: Icon(Icons.facebook,
-                                        color: Colors.white, size: 40),
-                                  ),
-                                  SizedBox(width: 20),
-                                  Container(
-                                    decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(10),
-                                      color: Colors.indigo,
-                                    ),
-                                    padding: EdgeInsets.all(10),
-                                    child: Icon(Icons.apple,
-                                        color: Colors.white, size: 40),
-                                  ),
-                                ],
-                              ),
-
-                              SizedBox(height: 20),
-                            ],
-                          ),
-                        ),
-                      ),
+                      // FOOTER
+                      _buildFooter(context),
                     ],
                   ),
+                ),
+              ],
+            ),
+          );
+        },
+      ),
+    );
+  }
 
-                  // FOOTER
-                  Container(
-                    width: double.infinity,
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(
-                          10), // Set the background color to white
-                      boxShadow: [
-                        BoxShadow(
-                          color: Colors.grey.withOpacity(0.2),
-                          spreadRadius: 2,
-                          blurRadius: 4,
-                          offset: Offset(0, -2), // Adjust shadow position
-                        ),
-                      ],
-                    ),
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(
-                          vertical: 20, horizontal: 40),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Text("EST 2024",
-                              style: TextStyle(fontWeight: FontWeight.bold)),
-                          SizedBox(height: 10),
-                          Wrap(
-                            alignment: WrapAlignment.center,
-                            spacing: 10,
-                            runSpacing: 5,
-                            children: [
-                              Text("About",
-                                  style:
-                                      TextStyle(fontWeight: FontWeight.bold)),
-                              Text("Terms of Use",
-                                  style:
-                                      TextStyle(fontWeight: FontWeight.bold)),
-                              Text("Privacy Policy",
-                                  style:
-                                      TextStyle(fontWeight: FontWeight.bold)),
-                              Text("Cookie Policy",
-                                  style:
-                                      TextStyle(fontWeight: FontWeight.bold)),
-                              Text("Copyright Policy",
-                                  style:
-                                      TextStyle(fontWeight: FontWeight.bold)),
-                              Text("Brand Policy",
-                                  style:
-                                      TextStyle(fontWeight: FontWeight.bold)),
-                              Text("Visitor Controls",
-                                  style:
-                                      TextStyle(fontWeight: FontWeight.bold)),
-                            ],
-                          ),
-                        ],
-                      ),
-                    ),
-                  )
-                ],
+  Widget _buildHeader(BuildContext context) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        const Text(
+          "DABLE #4",
+          style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+        ),
+        Row(
+          children: [
+            const Text(
+              "English",
+              style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold),
+            ),
+            const Icon(Icons.arrow_drop_down, color: Colors.grey, size: 30),
+            const SizedBox(width: 10),
+            ElevatedButton(
+              onPressed: () {},
+              style: ElevatedButton.styleFrom(
+                backgroundColor: const Color(0xFFFEF7FF),
+                foregroundColor: Colors.indigo,
+                elevation: 0,
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+                textStyle:
+                    const TextStyle(fontSize: 14, fontWeight: FontWeight.bold),
               ),
+              child: const Text("Sign In"),
+            ),
+            const SizedBox(width: 10),
+            ElevatedButton(
+              onPressed: () {},
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Colors.indigo,
+                foregroundColor: Colors.white,
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+                textStyle:
+                    const TextStyle(fontSize: 14, fontWeight: FontWeight.bold),
+              ),
+              child: const Text("Register"),
+            ),
+          ],
+        ),
+      ],
+    );
+  }
+
+  Widget _buildLeftSection() {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        const Text(
+          "Welcome to",
+          style: TextStyle(fontSize: 32, fontWeight: FontWeight.bold),
+        ),
+        const Text(
+          "DABLE #4",
+          style: TextStyle(fontSize: 40, fontWeight: FontWeight.bold),
+        ),
+        const SizedBox(height: 10),
+        const Text(
+          "Lorem ipsum is a dummy text commonly used in graphic design, "
+          "publishing, and web development to fill empty spaces in a layout.",
+          style: TextStyle(fontSize: 16),
+        ),
+        const SizedBox(height: 20),
+        const Text(
+          "Join Now",
+          style: TextStyle(
+              color: Colors.indigo, fontSize: 18, fontWeight: FontWeight.bold),
+        ),
+        const SizedBox(height: 20),
+        Container(
+          height: 300,
+          decoration: BoxDecoration(
+            image: const DecorationImage(
+              image: NetworkImage(
+                  "https://via.placeholder.com/600x400.png?text=Welcome+Image"),
+              fit: BoxFit.cover,
+            ),
+            borderRadius: BorderRadius.circular(10),
+          ),
+        ),
+      ],
+    );
+  }
+
+  Widget _buildRightSection() {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        const Text(
+          "Sign In",
+          style: TextStyle(fontSize: 32, fontWeight: FontWeight.bold),
+        ),
+        const SizedBox(height: 20),
+
+        // EMAIL FIELD
+        TextField(
+          decoration: InputDecoration(
+            labelText: "Enter Email or Phone",
+            border: OutlineInputBorder(
+              borderSide: BorderSide(color: Colors.grey.shade300),
             ),
           ),
         ),
+        const SizedBox(height: 10),
+
+        // PASSWORD FIELD
+        TextField(
+          obscureText: true,
+          decoration: InputDecoration(
+            labelText: "Password",
+            border: OutlineInputBorder(
+              borderSide: BorderSide(color: Colors.grey.shade300),
+            ),
+            suffixIcon: const Icon(Icons.visibility_off),
+          ),
+        ),
+        const SizedBox(height: 10),
+
+        Align(
+          alignment: Alignment.centerRight,
+          child: TextButton(
+            onPressed: () {},
+            child: const Text("Forgot Password?",
+                style: TextStyle(color: Colors.grey)),
+          ),
+        ),
+        const SizedBox(height: 20),
+
+        // SIGN IN BUTTON
+        SizedBox(
+          width: double.infinity,
+          height: 50,
+          child: ElevatedButton(
+            onPressed: () {},
+            style: ElevatedButton.styleFrom(
+              backgroundColor: Colors.indigo,
+              foregroundColor: Colors.white,
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(5)),
+            ),
+            child: const Text("Sign In",
+                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 14)),
+          ),
+        ),
+        const SizedBox(height: 20),
+
+        // OR DIVIDER
+        Row(
+          children: [
+            Expanded(child: Divider(color: Colors.grey.shade400, thickness: 1)),
+            const Padding(
+              padding: EdgeInsets.symmetric(horizontal: 10),
+              child: Text("Or Continue with"),
+            ),
+            Expanded(child: Divider(color: Colors.grey.shade400, thickness: 1)),
+          ],
+        ),
+        const SizedBox(height: 20),
+
+        // SOCIAL LOGIN
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            _buildSocialIcon(Icons.g_mobiledata),
+            const SizedBox(width: 20),
+            _buildSocialIcon(Icons.apple),
+            const SizedBox(width: 20),
+            _buildSocialIcon(Icons.facebook),
+          ],
+        ),
+      ],
+    );
+  }
+
+  Widget _buildSocialIcon(IconData icon) {
+    return Container(
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(10),
+        color: Colors.indigo,
+      ),
+      padding: const EdgeInsets.all(12),
+      child: Icon(icon, color: Colors.white, size: 40),
+    );
+  }
+
+  Widget _buildFooter(BuildContext context) {
+    return Container(
+      width: double.infinity,
+      padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 40),
+      decoration: BoxDecoration(
+        color: Colors.white,
+        boxShadow: [
+          BoxShadow(
+            color: Colors.grey.withOpacity(0.1),
+            spreadRadius: 2,
+            blurRadius: 4,
+            offset: const Offset(0, -2),
+          ),
+        ],
+      ),
+      child: Column(
+        children: [
+          const Text("EST 2024", style: TextStyle(fontWeight: FontWeight.bold)),
+          const SizedBox(height: 10),
+          Wrap(
+            alignment: WrapAlignment.center,
+            spacing: 10,
+            runSpacing: 5,
+            children: [
+              _footerLink("About"),
+              _footerLink("Terms of Use"),
+              _footerLink("Privacy Policy"),
+              _footerLink("Cookie Policy"),
+              _footerLink("Copyright Policy"),
+              _footerLink("Brand Policy"),
+            ],
+          ),
+        ],
       ),
     );
+  }
+
+  Widget _footerLink(String text) {
+    return Text(text, style: const TextStyle(fontWeight: FontWeight.bold));
   }
 }
