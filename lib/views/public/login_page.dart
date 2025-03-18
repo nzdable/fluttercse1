@@ -103,8 +103,7 @@ class LoginPage extends StatelessWidget {
                                 height: 300,
                                 decoration: BoxDecoration(
                                   image: DecorationImage(
-                                    image: NetworkImage(
-                                        "https://png.pngtree.com/png-vector/20220706/ourmid/pngtree-distant-access-to-business-data-png-image_5701909.png"),
+                                    image: NetworkImage(""),
                                     fit: BoxFit.cover,
                                   ),
                                   borderRadius: BorderRadius.circular(10),
